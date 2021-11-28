@@ -1,0 +1,291 @@
+html {
+  /* margin: 0; */
+  /* height: 100%; */
+}
+
+body {
+  /* min-height: 100vh; */
+  /* margin: 0; */
+  /* width: 100%;
+   height: 1000px; */
+  /* background-image: url('https://thao-nguyen-design.github.io/project-1-emulation/background.png'); */
+  /* background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* text-align: center; */
+  /* border: 1px solid red; */
+  background-color: black;
+}
+
+canvas {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.title-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 12%;
+  padding-bottom: 1em;
+  margin: 0;
+}
+
+.subtitle-container {
+  width: 100%;
+  margin: 0;
+  /* padding-top: 10px; */
+  /* padding-bottom: 20px; */
+  text-align: center
+  /* width: 100%; */
+}
+
+.title2-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 0.5em;
+  margin: 0;
+}
+
+.text-container {
+  /* padding: 40px; */
+  margin: auto;
+  text-align: left;
+  width: 50%;
+}
+
+
+.title {
+  font-family: "Megrim";
+  font-size: 6.7em;
+  color: white;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  22%,
+  36%,
+  75% {
+    color: white;
+    text-shadow: 0 0 0.3rem #bfdbf7, 0 0 1rem #bfdbf7,
+      -0.1rem 0.1rem 1rem #bfdbf7, 0.2rem 0.1rem 0.5rem #bfdbf7,
+      0 -0.3rem 1rem #bfdbf7, 0 0.4rem 2rem #bfdbf7;
+  }
+
+  28%,
+  33% {
+    color: white;
+    text-shadow: none;
+  }
+
+  82%,
+  97% {
+    color: white;
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+
+  100% {
+    color: white;
+    text-shadow: 0 0 0.6rem #bfdbf7, 0 0 1.5rem #bfdbf7,
+      -0.2rem 0.1rem 1rem #bfdbf7, 0.2rem 0.1rem 1rem #bfdbf7,
+      0 -0.5rem 2rem #bfdbf7, 0 0.5rem 3rem #bfdbf7;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+#subtitle {
+  font-size: 1.5em;
+  color: white;
+  line-height: 1.7;
+  font-family: 'Comfortaa', cursive;
+
+}
+
+#title2 {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  font-size: 2.3em;
+  color: white;
+  font-family: 'Comfortaa', cursive;
+}
+
+#text {
+  font-size: 1em;
+  line-height: 1.5;
+  color: white;
+font-family: 'Montserrat', sans-serif;
+  /* margin-top: 0px; */
+  /* margin-bottom: 35px; */
+}
+
+.link-container {
+  position: relative;
+  /* margin-top: 0px; */
+  /* margin-bottom: 35px; */
+}
+
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration:
+    underline;
+}
