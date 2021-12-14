@@ -1,6 +1,6 @@
 # Neon Keys | Thao Nguyen
 ART 109 Final Project | Fall 2021 SJSU
-------------------
+
 # Info
 
 Project Name: Neon Keys
