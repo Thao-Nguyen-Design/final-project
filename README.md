@@ -7,7 +7,7 @@ Project Name: Neon Keys
 
 Created on December 14, 2021
 
-Last Updated on December 14, 2021
+Last updated on December 14, 2021
 
 Live Link: https://thao-nguyen-design.github.io/final-project/
 
