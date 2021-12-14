@@ -21,7 +21,7 @@ var secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 var lastRow = ["Z", "X", "C", "V", "B", "N", "M"];
 
 let words = ["dog", "cat", "eats", "jumps", "chicken", "rat",
-  "skin", "avoid", "joke", "snap", "van", "patch", "install",
+  "skin", "avoid", "joke", "snap", "van", "patch",
   "cultured", "tropical", "soup", "flawless", "shoe",
   "control", "greedy", "amount", "ancient", "tasteful",
   "install", "nod", "numerous", "silky", "zinc", "hole",
@@ -29,11 +29,18 @@ let words = ["dog", "cat", "eats", "jumps", "chicken", "rat",
   "angle", "accompany", "regret", "colossal", "soar", "spoon",
   "first", "nail", "game", "decorate", "pet", "brick", "grip",
   "contribute", "sack", "subsequent", "dig", "long", "healthy",
-  "quick", "impeach", "cloud", "coach", "kindhearted", "marvelous",
-  "creator", "sweep", "irate", "scrub", "marked", "hard", "fascinated",
+  "quick", "impeach", "cloud", "coach", "marvelous",
+  "creator", "sweep", "irate", "scrub", "marked", "hard",
   "pluck", "amount", "talk", "near", "celery", "crazy",
   "abrupt", "majestic", "uptight", "place", "glossy", "murmur",
-  "robin", "bucket", "market", "fix", "pets"
+  "robin", "bucket", "market", "fix", "pets",
+  "knit", "grass" , "derive", "approach", "sweat",
+  "pail", "impair", "imbibe", "sweet", "helpless",
+  "brake", "end", "legs", "gain", "reduce",
+  "boast", "explore", "dinner", "fireman" , "dedicate",
+  "creator", "propose", "knock", "exultant", "prepare",
+  "uproot", "money", "knife", "fire", "leap",
+  "preserve", "improve", "jelly", "able", "basket", "wonderful", "flag", "rant", "awake"
 ];
 
 let typingKeys = [];
@@ -90,6 +97,10 @@ function setup() {
 
   bgSound.playMode("untilDone");
   gameSound.playMode("untilDone");
+  keySound.playMode("restart");
+  correctSound.playMode("restart");
+  missSound.playMode("restart");
+  clocksound.playMode("restart");
 
   bgSound.setVolume(vol);
   gameSound.setVolume(vol);
@@ -170,22 +181,33 @@ function hold() {
   readyCountdown = 5;
   push();
   textFont(titlefont);
-  textSize(110);
+  textSize(130);
   noStroke();
   //   fill(white);
   // textTitleNeon("Rhythmic Keys", width/2, height/2 - gutter*2, randomCol);
   fill(white);
-  textTitleNeon("Title go here", width / 2, height / 2 - gutter * 2, randomCol);
-// beat tap, speedy beats rapid rythm keyOn neon keys glowosity lumi keys static
+  textTitleNeon("Neon Keys", width / 2, height / 2 - gutter * 2.5, randomCol);
   pop();
+
+  push();
+  noStroke();
+  fill(white);
+  textSize(16);
+  textAlign(RIGHT);
+  glow(white, 12);
+  text("Press any key", width / 2 + 285, height / 2 - 30);
+pop();
+
   push();
   noStroke();
   fill(gray);
   textAlign(LEFT);
   textSize(10);
+  text("Final Project", 0 + 25, 0 + 25);
 text("Created by Thao Nguyen", 0 + 25, height -25);
 textAlign(RIGHT);
 text("Last Updated: Dec 14 2021", width - 25, height -25);
+text("ART 109 / SJSU", width - 25, 25);
 pop();
 
   push();
@@ -253,8 +275,11 @@ function go() {
   state = "state2";
 
   if (frameCount % 60 == 0 && gameCountdown > 0) {
-    vol -= 0.03;
     gameCountdown--;
+  }
+
+  if (frameCount % 180 == 0 && gameCountdown > 0 && vol > 0) {
+    vol-= 0.01;
   }
 
   if (frameCount % 60 == 0 && gameCountdown < 4) {
@@ -265,12 +290,14 @@ function go() {
   drawInfo();
 
   if (gameCountdown == 0) {
+    gameSound.pause();
     state = "state3";
   }
 }
 
 function result() {
-gameSound.setVolume(0.15);
+  gameSound.setVolume(0.2);
+  gameSound.loop();
   state = "state3";
   fill(white);
   noStroke();

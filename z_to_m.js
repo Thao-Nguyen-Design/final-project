@@ -19,7 +19,7 @@ class LetterZ {
     this.currentY2 = this.startY;
     this.randomColor = objectColors[int(random(objectColors.length))];
     this.counter = 0;
-    this.duration = 70;
+    this.duration = 30;
   }
   move() {
 
@@ -86,7 +86,7 @@ class LetterC {
     this.arcEnd = random(180, 360);
     this.arcSpeed1 = 7;
     this.arcSpeed2 = 3;
-    this.duration = 80;
+    this.duration = 60;
     this.randomColor = objectColors[int(random(objectColors.length))];
 
   }
@@ -196,13 +196,12 @@ class LetterN {
   }
 }
 
-//3 square expanding from center
+//2 square expanding from center
 class LetterM {
   constructor() {
     this.size = 1;
-    this.duration = 100;
+    this.duration = 60;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
   move() {
 

@@ -37,7 +37,7 @@ class LetterS {
     this.endY2 = 0;
     this.angle = 0;
     this.randomColor = objectColors[int(random(objectColors.length))];
-    this.duration = 50;
+    this.duration = 40;
   }
   move() {
 
@@ -209,7 +209,7 @@ class LetterJ {
 class LetterK {
   constructor() {
     this.size = 1;
-    this.duration = 60;
+    this.duration = 50;
     this.randomColor = objectColors[int(random(objectColors.length))];
 
   }
@@ -232,7 +232,7 @@ noFill();
 class LetterL {
   constructor() {
     this.size = 1;
-    this.duration = 60;
+    this.duration = 50;
     this.randomColor = objectColors[int(random(objectColors.length))];
 
   }

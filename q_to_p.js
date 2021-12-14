@@ -106,7 +106,7 @@ class LetterT {
     this.endY2 = 0;
     this.angle = 0;
     this.randomColor = objectColors[int(random(objectColors.length))];
-    this.duration = 50;
+    this.duration = 40;
   }
   move() {
 
@@ -175,7 +175,7 @@ class LetterU {
     this.endY2 = 0;
     this.angle = 0;
     this.randomColor = objectColors[int(random(objectColors.length))];
-    this.duration = 50;
+    this.duration = 40;
   }
   move() {
 
