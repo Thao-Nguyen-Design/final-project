@@ -13,6 +13,8 @@ Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
 
+---------------------------------
+
 ### Credit
 See JS files for more details.
 
