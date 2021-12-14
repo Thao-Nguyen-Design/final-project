@@ -18,7 +18,6 @@ Project is inspired by https://graphicbeats.net/
 ### Credit
 See JS files for more details.
 
----------------------------------
 **Code**
 
 https://graphicbeats.net/data/script.js
