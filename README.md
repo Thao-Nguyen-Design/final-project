@@ -1,15 +1,20 @@
-# Final Project | Art 109 
+# Neon Keys | Thao Nguyen
+ART 109 Final Project 
 Fall 2021 SJSU
 ------------------
-| INFO | 
+
+INFO -----------------
 
 Project Name: Neon Keys
 
-Created by Thao Nguyen
+Created: December 14, 2021
+
+Last Updated: December 14, 2021
 
 Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
+
 
 CRETDIT ------------
 
