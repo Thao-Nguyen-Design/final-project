@@ -21,7 +21,8 @@ C R E D I T
 
 See JS files for more details.
 
-Coding Credit
+
+Code
 
 https://graphicbeats.net/data/script.js
 
@@ -30,14 +31,20 @@ https://openprocessing.org/sketch/1122186
 https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
 
 
-Music Credit
+Fonts
+https://fonts.google.com/specimen/Montserrat+Alternates
+https://www.1001fonts.com/sunset-club-free-trial-font.html
+
+
+Music
 
 https://www.bensound.com/royalty-free-music/track/erf
 
 https://www.bensound.com/royalty-free-music/track/creative-minds
 
 
-Sound Effects Credit
+
+Sound Effects
 
 https://www.zapsplat.com/music/alert-tone-wooden-mallet-style-chime-1/
 
