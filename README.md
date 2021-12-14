@@ -1,7 +1,7 @@
 # Neon Keys | Thao Nguyen
-ART 109 Final Project | Fall 2021 SJSU
+## ART 109 Final Project | Fall 2021 SJSU
 
-# Info
+### Info
 
 Project Name: Neon Keys
 
@@ -13,10 +13,10 @@ Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
 
-# Credit
+### Credit
 See JS files for more details.
 
-Code
+**Code**
 
 https://graphicbeats.net/data/script.js
 
@@ -25,14 +25,14 @@ https://openprocessing.org/sketch/1122186
 https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
 
 
-Fonts
+**Fonts**
 
 https://fonts.google.com/specimen/Montserrat+Alternates
 
 https://www.1001fonts.com/sunset-club-free-trial-font.html
 
 
-Music
+**Music**
 
 https://www.bensound.com/royalty-free-music/track/erf
 
@@ -40,7 +40,7 @@ https://www.bensound.com/royalty-free-music/track/creative-minds
 
 
 
-Sound Effects
+**Sound Effects**
 
 https://www.zapsplat.com/music/alert-tone-wooden-mallet-style-chime-1/
 
