@@ -2,7 +2,6 @@
 ART 109 Final Project | Fall 2021 SJSU
 ------------------
 # Info
-----------------
 
 Project Name: Neon Keys
 
@@ -14,11 +13,8 @@ Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
 
---------------------
 # Credit
-----------------
 See JS files for more details.
-
 
 Code
 
