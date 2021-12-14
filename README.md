@@ -15,7 +15,10 @@ Live Link: https://thao-nguyen-design.github.io/final-project/
 Project is inspired by https://graphicbeats.net/
 
 
+
 C R E D I T
+
+See JS files for more details.
 
 Coding Credit
 
