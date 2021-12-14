@@ -3,7 +3,9 @@ Fall 2021 SJSU
 ------------------
 
 Project Name: Neon Keys
+
 By Thao Nguyen
+
 Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
