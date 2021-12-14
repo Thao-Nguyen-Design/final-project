@@ -13,8 +13,10 @@ Live Link: https://thao-nguyen-design.github.io/final-project/
 
 Project is inspired by https://graphicbeats.net/
 
+---------------------------------
 ### Credit
 See JS files for more details.
+---------------------------------
 
 **Code**
 
@@ -24,6 +26,7 @@ https://openprocessing.org/sketch/1122186
 
 https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
 
+---------------------------------
 
 **Fonts**
 
@@ -31,6 +34,7 @@ https://fonts.google.com/specimen/Montserrat+Alternates
 
 https://www.1001fonts.com/sunset-club-free-trial-font.html
 
+---------------------------------
 
 **Music**
 
@@ -38,7 +42,7 @@ https://www.bensound.com/royalty-free-music/track/erf
 
 https://www.bensound.com/royalty-free-music/track/creative-minds
 
-
+---------------------------------
 
 **Sound Effects**
 
