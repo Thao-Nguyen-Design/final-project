@@ -210,11 +210,11 @@ function hold() {
   fill(gray);
   textAlign(LEFT);
   textSize(10);
-  text("Final Project", 0 + 25, 0 + 25);
+  text("ART 109 | Final Project", 0 + 25, 0 + 25);
   text("Created by Thao Nguyen", 0 + 25, height - 25);
   textAlign(RIGHT);
   text("Last Updated: Dec 14 2021", width - 25, height - 25);
-  text("ART 109 / SJSU", width - 25, 25);
+  text("Fall 2021 | SJSU", width - 25, 25);
   pop();
 
   push();
