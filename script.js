@@ -1,50 +1,55 @@
+//This project is inspired by https://graphicbeats.net/
+//Code adapted from multiple sources, written in comments above function.
+//See README.md for sources and assets links.
+
 let wordCount = 0;
 let incorrectCount = 0;
 let correctCount = 0;
 let accuracy = 100;
-let offset = 0.0;
 
 let readyCountdown = 5;
 let gameCountdown = 60;
 
 let state = "state0";
 let miss = false;
+
 let animations = [];
 let effects = [];
 let keyEffects = [];
-
-let gutter = 60;
-let randomIndex;
-
-var firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-var secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-var lastRow = ["Z", "X", "C", "V", "B", "N", "M"];
-
-let words = ["dog", "cat", "eats", "jumps", "chicken", "rat",
-  "skin", "avoid", "joke", "snap", "van", "patch",
-  "cultured", "tropical", "soup", "flawless", "shoe",
-  "control", "greedy", "amount", "ancient", "tasteful",
-  "install", "nod", "numerous", "silky", "zinc", "hole",
-  "colorful", "rush", "calendar", "disturb", "drink", "quarter",
-  "angle", "accompany", "regret", "colossal", "soar", "spoon",
-  "first", "nail", "game", "decorate", "pet", "brick", "grip",
-  "contribute", "sack", "subsequent", "dig", "long", "healthy",
-  "quick", "impeach", "cloud", "coach", "marvelous",
-  "creator", "sweep", "irate", "scrub", "marked", "hard",
-  "pluck", "amount", "talk", "near", "celery", "crazy",
-  "abrupt", "majestic", "uptight", "place", "glossy", "murmur",
-  "robin", "bucket", "market", "fix", "pets",
-  "knit", "grass" , "derive", "approach", "sweat",
-  "pail", "impair", "imbibe", "sweet", "helpless",
-  "brake", "end", "legs", "gain", "reduce",
-  "boast", "explore", "dinner", "fireman" , "dedicate",
-  "creator", "propose", "knock", "exultant", "prepare",
-  "uproot", "money", "knife", "fire", "leap",
-  "preserve", "improve", "jelly", "able", "basket", "wonderful", "flag", "rant", "awake"
-];
-
 let typingKeys = [];
 let typedKeys = [];
+
+let gutter = 60;
+let vol = 0.2;
+let offset = 0.0;
+
+let firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+let secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+let lastRow = ["Z", "X", "C", "V", "B", "N", "M"];
+
+let words = ["dog", "cat", "eats", "jumps", "chicken", "rat", "skin",
+  "avoid", "joke", "snap", "van", "patch", "cultured", "tropical", "soup",
+  "flawless", "shoe", "control", "greedy", "amount", "ancient", "tasteful",
+  "install", "nod", "numerous", "silky", "zinc", "hole", "colorful", "rush",
+  "calendar", "disturb", "drink", "quarter", "angle", "accompany", "regret",
+  "colossal", "soar", "spoon", "first", "nail", "game", "decorate", "pet",
+  "brick", "grip", "contribute", "sack", "subsequent", "dig", "long",
+  "healthy", "quick", "impeach", "cloud", "coach", "marvelous", "creator",
+  "sweep", "irate", "scrub", "marked", "hard", "pluck", "amount", "talk",
+  "near", "celery", "crazy", "abrupt", "majestic", "uptight", "place",
+  "glossy", "murmur", "robin", "bucket", "market", "fix", "pets", "knit",
+  "grass", "derive", "approach", "sweat", "pail", "impair", "imbibe", "sweet",
+  "helpless", "brake", "end", "legs", "gain", "reduce", "boast", "explore",
+  "dinner", "fireman", "dedicate", "creator", "propose", "knock", "exultant",
+  "prepare", "uproot", "money", "knife", "fire", "leap", "preserve", "improve",
+  "jelly", "able", "basket", "wonderful", "flag", "rant", "awake"
+];
+
+let objectColors = [
+  [346, 82, 100], // pink
+  [183, 80, 95], // cyan
+  [36, 95, 100] // orange
+];
 
 let bgColor;
 let white;
@@ -58,12 +63,7 @@ let missSound;
 let clocksound;
 
 let textfont;
-let vol = 0.2;
-var objectColors = [
-  [346, 82, 100], // pink
-  [183, 80, 95], // cyan
-[36, 95, 100] // orange
-];
+let titlefont;
 
 function preload() {
 
@@ -79,20 +79,24 @@ function preload() {
 
 }
 
-
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
+
   textAlign(CENTER, CENTER);
   textSize(22);
+  textFont(textfont);
+
   angleMode(DEGREES);
   colorMode(HSB, 360, 100, 100, 100);
+
+
   word = randomizer(words);
   typingKeys.push(...word);
 
   bgColor = color(0, 0, 6, 100); //dark gray
   white = color(0, 0, 100, 100);
-  gray = color(0, 0, 45, 100);
+  gray = color(0, 0, 45, 100); //midtone gray
   randomCol = color(objectColors[int(random(objectColors.length))]);
 
   bgSound.playMode("untilDone");
@@ -104,8 +108,6 @@ function setup() {
 
   bgSound.setVolume(vol);
   gameSound.setVolume(vol);
-
-  textFont(textfont);
 
 }
 
@@ -141,26 +143,31 @@ function keyPressed() {
 
   setAnimation();
 
+  //play keySound in homepage
   if (state == "state0" && keyCode != ENTER) {
     keySound.play();
   }
 
+  //play keySound in result page
   if (state == "state3" && key != " ") {
     keySound.play();
   }
 
+  //if correct letter is pressed and in game state
   if (key == typingKeys[0] && state == "state2") {
     miss = false;
     keySound.play();
     typedKeys.unshift(typingKeys[0]);
     typingKeys.splice(0, 1);
     correctCount++;
+    //if wrong letter is pressed and in game state
   } else if (keyIsPressed === true && key != typingKeys[0] && state == "state2") {
     miss = true;
     missSound.play();
     incorrectCount++;
   }
 
+  //if word is finish typed, get new word
   if (typingKeys.length == 0 && state == "state2") {
     correctSound.play();
     wordCount++;
@@ -168,47 +175,47 @@ function keyPressed() {
     typingKeys.push(...word);
     randomCol = color(objectColors[int(random(objectColors.length))]);
     typedKeys = [];
-
   }
-  accuracy = round(correctCount / (correctCount + incorrectCount) * 100, 1);
 
+  accuracy = round(correctCount / (correctCount + incorrectCount) * 100, 1);
 }
 
+//state0
 function hold() {
+
   state = "state0";
+
   bgSound.loop();
 
   readyCountdown = 5;
+
+  noStroke();
+
   push();
   textFont(titlefont);
   textSize(130);
-  noStroke();
-  //   fill(white);
-  // textTitleNeon("Rhythmic Keys", width/2, height/2 - gutter*2, randomCol);
   fill(white);
   textTitleNeon("Neon Keys", width / 2, height / 2 - gutter * 2.5, randomCol);
   pop();
 
   push();
-  noStroke();
   fill(white);
   textSize(16);
   textAlign(RIGHT);
   glow(white, 12);
   text("Press any key", width / 2 + 285, height / 2 - 30);
-pop();
+  pop();
 
   push();
-  noStroke();
   fill(gray);
   textAlign(LEFT);
   textSize(10);
   text("Final Project", 0 + 25, 0 + 25);
-text("Created by Thao Nguyen", 0 + 25, height -25);
-textAlign(RIGHT);
-text("Last Updated: Dec 14 2021", width - 25, height -25);
-text("ART 109 / SJSU", width - 25, 25);
-pop();
+  text("Created by Thao Nguyen", 0 + 25, height - 25);
+  textAlign(RIGHT);
+  text("Last Updated: Dec 14 2021", width - 25, height - 25);
+  text("ART 109 / SJSU", width - 25, 25);
+  pop();
 
   push();
   glow(white, 15);
@@ -216,14 +223,17 @@ pop();
   pop();
 
   if (keyCode === ENTER) {
-bgSound.stop();
+    bgSound.stop();
     state = "state1";
   }
 
 }
 
+//state1
 function ready() {
+
   state = "state1";
+
   gameSound.loop();
 
   wordCount = 0;
@@ -232,15 +242,13 @@ function ready() {
   accuracy = 100;
   gameCountdown = 60;
 
-
+  //countdown from 5
   if (frameCount % 60 == 0 && readyCountdown > 0) {
     clocksound.play();
     readyCountdown--;
   }
-  // go();
+
   push();
-  // fill(0,0, 100, 50);
-  // rect(0, 0, width, height);
   noStroke();
   rectMode(CENTER);
   fill(white);
@@ -254,9 +262,7 @@ function ready() {
   strokeWeight(4);
   square(width / 2, height / 2, 150, 10);
   square(width / 2, height / 2, 150, 10);
-
   pop();
-
 
   drawInfo();
 
@@ -268,20 +274,24 @@ function ready() {
     state = "state2";
   }
 
-
 }
 
+//state2
 function go() {
+
   state = "state2";
 
+  //countdown every second (60 sec)
   if (frameCount % 60 == 0 && gameCountdown > 0) {
     gameCountdown--;
   }
 
+  //lower the background volume every 3 secs
   if (frameCount % 180 == 0 && gameCountdown > 0 && vol > 0) {
-    vol-= 0.01;
+    vol -= 0.01;
   }
 
+  //play clocksound when countdown is 3
   if (frameCount % 60 == 0 && gameCountdown < 4) {
     clocksound.play();
   }
@@ -293,19 +303,22 @@ function go() {
     gameSound.pause();
     state = "state3";
   }
+
 }
 
+//state3
 function result() {
+
+  state = "state3";
+
   gameSound.setVolume(0.2);
   gameSound.loop();
-  state = "state3";
+
   fill(white);
   noStroke();
 
   push();
   textSize(35);
-  // glow(randomCol, 12);
-  // text("Game Over", width / 2, height / 2 - 200);
   textNeon("Game Over", width / 2, height / 2 - 200, white);
   pop();
 
@@ -314,14 +327,12 @@ function result() {
   textAlign(LEFT);
   text("Words", width / 2 - 220, height / 2 - 100);
   text("Characters", width / 2 - 220, height / 2);
-
   text("Miss", width / 2 + 150, height / 2 - 100);
   text("Accuracy", width / 2 + 150, height / 2);
 
   textSize(35);
   text(wordCount, width / 2 - 220, height / 2 - 60);
   text(correctCount, width / 2 - 220, height / 2 + 40);
-
   text(incorrectCount, width / 2 + 150, height / 2 - 60);
   text(accuracy + "%", width / 2 + 150, height / 2 + 40);
   pop();
@@ -329,11 +340,9 @@ function result() {
   push();
   textAlign(CENTER);
   textSize(20);
-
   fill(0, 0, 100, frameCount % 100);
   text("Press spacebar to return", width / 2, height / 2 + 150);
   pop();
-
 
   if (key == " ") {
     gameSound.stop();
@@ -342,13 +351,18 @@ function result() {
     animations = [];
     state = "state0";
   }
+
 }
 
+//randomize an array
+//adapted from Code Source 2
 function randomizer(array) {
-  return array[floor(random(0, array.length))];
+  return array[int(random(0, array.length))];
 }
 
+//draw the game info (word, miss, time, accuracy)
 function drawInfo() {
+
   push();
   noStroke();
   fill(gray);
@@ -365,46 +379,36 @@ function drawInfo() {
   text("Time", width * 0.04, height * 0.08);
   text("Accuracy", width * 0.04, height * 0.92);
   textAlign(RIGHT);
-
   text("Words", width * 0.96, height * 0.08);
   text("Miss", width * 0.96, height * 0.92);
-
   pop();
+
 }
 
+//draw the game typing section
+//adapted from Code Source 2
 function drawTypingKeys() {
+
   gutter = 60;
 
+  //draw the keys haven't typed on the right
   push();
   let index1 = 0;
   for (let x = 0; x < 10; x++) {
-    // noFill();
-    // stroke(255);
-    // strokeWeight(2);
-    // square(width/2 + x * gutter +10, height/2 - 25, 60, 10);
     fill(white);
-    // noFill();
-    // strokeWeight(3);
     noStroke();
     textAlign(CENTER);
     textSize(55);
     glow(white, 10);
     text(typingKeys[index1], width / 2 + x * gutter + 45, height / 2 - 25);
-    // textNeon(typingKeys[index1], width / 2 + x * gutter + 45, height / 2 - 25, white);
+
     if (index1 < typingKeys.length) {
       index1++;
     }
   }
   pop();
 
-  push();
-  strokeWeight(3);
-  // glow(white,10);
-
-  stroke(0, 0, 100);
-  line(width / 2, height / 2 - 150, width / 2, height / 2 + 110);
-  pop();
-
+  //draw the typed keys on the left
   push();
   let index2 = 0;
   for (let x = 0; x < 10; x++) {
@@ -412,10 +416,7 @@ function drawTypingKeys() {
     noStroke();
     textSize(55);
     textAlign(CENTER);
-    textNeon(typedKeys[index2],
-      width / 2 - x * gutter - 45,
-      height / 2 - 25,
-      randomCol);
+    textNeon(typedKeys[index2], width / 2 - x * gutter - 45, height / 2 - 25, randomCol);
 
     if (index2 < typedKeys.length) {
       index2++;
@@ -423,21 +424,31 @@ function drawTypingKeys() {
   }
   pop();
 
+  //draw line in the middle
+  push();
+  strokeWeight(3);
+  stroke(0, 0, 100);
+  line(width / 2, height / 2 - 150, width / 2, height / 2 + 110);
+  pop();
+
 }
 
+//draw keyboard in homepage
 function drawKeyboard(x, y) {
+
   push();
+
   translate(x, y);
 
-  var indexRow1 = 0;
-  var indexRow2 = 0;
-  var indexRow3 = 0;
+  let indexRow1 = 0;
+  let indexRow2 = 0;
+  let indexRow3 = 0;
 
+  //draw first row (q to p)
   for (let x = 0; x < 10; x++) {
     noFill();
     stroke(white);
     strokeWeight(2);
-
     square(x * gutter, 0, 50, 10);
     fill(white);
     noStroke();
@@ -449,6 +460,7 @@ function drawKeyboard(x, y) {
     }
   }
 
+  //draw second row (a to l)
   for (let x = 0; x < 9; x++) {
     noFill();
     stroke(white);
@@ -464,7 +476,7 @@ function drawKeyboard(x, y) {
     }
   }
 
-
+  //draw third row (z to m)
   for (let x = 0; x < 7; x++) {
     noFill();
     stroke(white);
@@ -480,6 +492,7 @@ function drawKeyboard(x, y) {
     }
   }
 
+  //draw enter key
   push();
   noFill();
   stroke(white);
@@ -488,14 +501,15 @@ function drawKeyboard(x, y) {
   noStroke();
   fill(white);
   textNeon("ENTER", gutter * 9, gutter + 82, randomCol);
-
   pop();
 
   pop();
 }
 
-
+//push new classes
+//adapted from Code Soure 1
 function setAnimation() {
+
   effects.push(new WrongKeys());
 
   // q to p
@@ -511,7 +525,6 @@ function setAnimation() {
       animations.push(objectW);
     }
     keyEffects.push(new Row1Effect("W", 1, objectW.duration, color(objectW.randomColor)));
-
   }
 
   if (key == 'e' || key == 'E') {
@@ -532,7 +545,6 @@ function setAnimation() {
     keyEffects.push(new Row1Effect("T", 4, objectT.duration, color(objectT.randomColor)));
   }
 
-
   if (key == 'y' || key == 'Y') {
     objectY = new LetterY();
     animations.push(objectY);
@@ -545,7 +557,6 @@ function setAnimation() {
       animations.push(objectU);
     }
     keyEffects.push(new Row1Effect("U", 6, objectU.duration, color(objectU.randomColor)));
-
   }
 
   if (key == 'i' || key == 'I') {
@@ -556,19 +567,16 @@ function setAnimation() {
 
   if (key == 'o' || key == 'O') {
     for (var i = 0; i < 5; i++) {
-
       objectO = new LetterO();
       animations.push(objectO);
     }
     keyEffects.push(new Row1Effect("O", 8, objectO.duration, color(objectO.randomColor)));
-
   }
 
   if (key == 'p' || key == 'P') {
     objectP = new LetterP();
     animations.push(objectP);
     keyEffects.push(new Row1Effect("P", 9, objectP.duration, color(objectP.randomColor)));
-
   }
 
   //a to l
@@ -592,7 +600,6 @@ function setAnimation() {
       animations.push(objectD);
     }
     keyEffects.push(new Row2Effect("D", 2, objectD.duration, color(objectD.randomColor)));
-
   }
 
   if (key == 'f' || key == 'F') {
@@ -607,9 +614,7 @@ function setAnimation() {
     objectG = new LetterG();
     animations.push(objectG);
     keyEffects.push(new Row2Effect("G", 4, objectG.duration, color(objectG.randomColor)));
-
   }
-
 
   if (key == 'h' || key == 'H') {
     for (var i = 0; i < 10; i++) {
@@ -617,7 +622,6 @@ function setAnimation() {
       animations.push(objectH);
     }
     keyEffects.push(new Row2Effect("H", 5, objectH.duration, color(objectH.randomColor)));
-
   }
 
   if (key == 'j' || key == 'J') {
@@ -651,7 +655,6 @@ function setAnimation() {
       animations.push(objectX);
     }
     keyEffects.push(new Row3Effect("X", 1, objectX.duration, color(objectX.randomColor)));
-
   }
 
   if (key == 'c' || key == 'C') {
@@ -660,14 +663,12 @@ function setAnimation() {
       animations.push(objectC);
     }
     keyEffects.push(new Row3Effect("C", 2, objectC.duration, color(objectC.randomColor)));
-
   }
 
   if (key == 'v' || key == 'V') {
     objectV = new LetterV();
     animations.push(objectV);
     keyEffects.push(new Row3Effect("V", 3, objectV.duration, color(objectV.randomColor)));
-
   }
 
   if (key == 'b' || key == 'B') {
@@ -682,7 +683,6 @@ function setAnimation() {
       animations.push(objectN);
     }
     keyEffects.push(new Row3Effect("N", 5, objectN.duration, color(objectN.randomColor)));
-
   }
 
   if (key == 'm' || key == 'M') {
@@ -690,11 +690,14 @@ function setAnimation() {
     animations.push(objectM);
     keyEffects.push(new Row3Effect("M", 6, objectM.duration, color(objectM.randomColor)));
   }
-
 }
 
+//play method of classes
+//adapted from Code Soure 1
 function playAnimation() {
 
+//play animation if key typed
+// in game state only play if correct key typed
   for (var i = 0; i < animations.length; i++) {
     if (miss == false) {
       animations[i].move();
@@ -702,12 +705,10 @@ function playAnimation() {
         animations.splice(i--, 1);
       }
     }
-    // if (state == "state0") {
-    //   animations[i].Row1Effect();
-    // }
-
   }
 
+//play miss effect if wrong key typed
+//only in game state
   for (var i = 0; i < effects.length; i++) {
     if (miss == true && keyIsPressed == true && state == "state2") {
       effects[i].move();
@@ -717,6 +718,7 @@ function playAnimation() {
     }
   }
 
+//play key effect in homepage (light up key on keyboard)
   for (var i = 0; i < keyEffects.length; i++) {
     if (state == "state0") {
       keyEffects[i].move();
@@ -728,7 +730,10 @@ function playAnimation() {
 
 }
 
+//make neon effect for rectangle
+//adapted from Code Source 3
 function rectNeon(x, y, width, height, glowColor) {
+
   glow(glowColor, 20);
   rect(x, y, width, height, 10);
   rect(x, y, width, height, 10);
@@ -741,7 +746,10 @@ function rectNeon(x, y, width, height, glowColor) {
 
 }
 
+//make neon flickering effect for title
+//adapted from Code Source 3
 function textTitleNeon(glowText, x, y, glowColor) {
+
   fill(0, 0, 40, 100);
   glow(glowColor, 0);
   text(glowText, x, y);
@@ -758,7 +766,10 @@ function textTitleNeon(glowText, x, y, glowColor) {
 
 }
 
+//make neon effect for text
+//adapted from Code Source 3
 function textNeon(glowText, x, y, glowColor) {
+
   glow(glowColor, 10);
   text(glowText, x, y);
   text(glowText, x, y);
@@ -766,16 +777,24 @@ function textNeon(glowText, x, y, glowColor) {
   text(glowText, x, y);
   glow(glowColor, 5);
   text(glowText, x, y);
+
 }
 
+//flickering effect
+//adapted from Code Source 3
 function flickering() {
+
   offset += 0.08;
   let n = noise(offset);
   if (n < 0.30) return 0;
   else return 100;
+
 }
 
+//neon effect
+//adapted from Code Source 3
 function glow(glowColor, blurriness) {
+
   drawingContext.shadowBlur = blurriness;
   drawingContext.shadowColor = glowColor;
 }

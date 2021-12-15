@@ -1,5 +1,9 @@
+//animation for key when pressed (row 2: a to l)
+//adapted from Code Source 1
+
 //circle jump from bottom
 class LetterA {
+
   constructor() {
     this.xPos = random(width);
     this.yPos = height - 200;
@@ -8,24 +12,28 @@ class LetterA {
     this.gravity = 3;
     this.duration = 40;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
+
   move() {
 
-noFill();
-
+    noFill();
     stroke(this.randomColor);
     strokeWeight(3);
+
     this.yVelocity += this.gravity;
     this.yPos += this.yVelocity;
+
     ellipse(this.xPos, this.yPos, this.size);
+
     this.duration--;
+
   }
 
 }
 
 //lines diagonally move from top left to bottom right
 class LetterS {
+
   constructor() {
     this.startX1 = -100;
     this.startY1 = 100;
@@ -39,6 +47,7 @@ class LetterS {
     this.randomColor = objectColors[int(random(objectColors.length))];
     this.duration = 40;
   }
+
   move() {
 
     stroke(this.randomColor);
@@ -49,12 +58,6 @@ class LetterS {
     translate(width, 0);
     rotate(180);
     line(this.startX1, this.startY1, this.endX1, this.endY1);
-    // for (var i = 0; i < 3; i++) {
-    //   line(this.startX1, this.startY1, this.endX1 + i * 100, this.endY1 + i * 140);
-    // }
-    // for (var i = 0; i < 3; i++) {
-    //   line(this.startX2, this.startY2, this.endX2 - i * 100, this.endY2 + i * 140);
-    // }
     pop();
 
     this.endX1 -= sin(this.angle) * 100;
@@ -64,19 +67,23 @@ class LetterS {
     this.angle += 3;
     this.duration--;
 
-}
+  }
+
 }
 
 //circle expanding from middle left
 class LetterD {
+
   constructor() {
     this.size = 1;
     this.duration = 60;
     this.randomColor = objectColors[int(random(objectColors.length))];
   }
+
   move() {
 
     push();
+
     stroke(this.randomColor);
     strokeWeight(3);
     translate(0, height / 2);
@@ -85,20 +92,25 @@ class LetterD {
 
     this.size += 50;
     this.duration--;
+
     pop();
   }
+
 }
 
 //circle expanding from middle right
 class LetterF {
+
   constructor() {
     this.size = 1;
     this.duration = 60;
     this.randomColor = objectColors[int(random(objectColors.length))];
   }
+
   move() {
 
     push();
+
     stroke(this.randomColor);
     strokeWeight(3);
     translate(width, height / 2);
@@ -107,18 +119,21 @@ class LetterF {
 
     this.size += 50;
     this.duration--;
+
     pop();
   }
+
 }
 
 //circle expand from top right and bottom left
 class LetterG {
+
   constructor() {
     this.size = 1;
     this.duration = 60;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
+
   move() {
 
     push();
@@ -133,28 +148,28 @@ class LetterG {
     this.duration--;
 
     pop();
+
   }
+
 }
 
 //line move from right to left
 class LetterH {
+
   constructor() {
     this.xPos = width;
     this.speed = 50;
     this.duration = 30;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
+
   move() {
 
     noStroke();
-
     fill(this.randomColor);
     rect(this.xPos, 0, 2, height);
 
     this.xPos -= this.speed;
-
-
     this.duration--;
   }
 
@@ -162,6 +177,7 @@ class LetterH {
 
 //2 rect move in opposite direction top and bottom
 class LetterJ {
+
   constructor() {
     this.startX1 = -100;
     this.startY1 = 100;
@@ -175,6 +191,7 @@ class LetterJ {
     this.randomColor = objectColors[int(random(objectColors.length))];
     this.duration = 50;
   }
+
   move() {
 
     stroke(this.randomColor);
@@ -184,14 +201,7 @@ class LetterJ {
     push();
     translate(width, 0);
     rotate(180);
-      line(this.startX2, this.startY2, this.endX2, this.endY2);
-
-    // for (var i = 0; i < 3; i++) {
-    //   line(this.startX1, this.startY1, this.endX1 + i * 100, this.endY1 + i * 140);
-    // }
-    // for (var i = 0; i < 3; i++) {
-    //   line(this.startX2, this.startY2, this.endX2 - i * 100, this.endY2 + i * 140);
-    // }
+    line(this.startX2, this.startY2, this.endX2, this.endY2);
     pop();
 
     this.endX1 -= sin(this.angle) * 100;
@@ -201,52 +211,60 @@ class LetterJ {
     this.angle += 3;
     this.duration--;
 
-}
+  }
 
 }
 
 //circle expanding from middle top
 class LetterK {
+
   constructor() {
     this.size = 1;
     this.duration = 50;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
+
   move() {
+
     push();
 
     stroke(this.randomColor);
-strokeWeight(3);
-noFill();
+    strokeWeight(3);
+    noFill();
     ellipse(width / 2, 0, this.size);
 
     this.size += 45;
     this.duration--;
 
     pop();
+
   }
+
 }
 
 //circle expand from middle bottom
 class LetterL {
+
   constructor() {
     this.size = 1;
     this.duration = 50;
     this.randomColor = objectColors[int(random(objectColors.length))];
-
   }
+
   move() {
+
     push();
 
     stroke(this.randomColor);
-strokeWeight(3);
-noFill();
+    strokeWeight(3);
+    noFill();
     ellipse(width / 2, height, this.size);
 
     this.size += 45;
     this.duration--;
 
     pop();
+
   }
+  
 }
