@@ -20,11 +20,11 @@ See JS files for more details.
 
 **Code**
 
-https://graphicbeats.net/data/script.js
+Source 1: https://graphicbeats.net/data/script.js
 
-https://openprocessing.org/sketch/1122186
+Source 2: https://openprocessing.org/sketch/1122186
 
-https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
+Source 3: https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
 
 ---------------------------------
 
