@@ -16,15 +16,15 @@ Project is inspired by https://graphicbeats.net/
 ---------------------------------
 
 ### Credit
-
-**Code**
 See JS files for more details.
 
-Source 1: https://graphicbeats.net/data/script.js
+**Code**
 
-Source 2: https://openprocessing.org/sketch/1122186
+https://graphicbeats.net/data/script.js
 
-Source 3: https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
+https://openprocessing.org/sketch/1122186
+
+https://github.com/Creativeguru97/YouTube_tutorial/tree/master/p5_hacks/Glow_effect
 
 ---------------------------------
 
@@ -53,3 +53,4 @@ https://www.zapsplat.com/music/alert-tone-wooden-mallet-style-chime-2/
 https://www.zapsplat.com/music/alert-tone-wooden-mallet-and-a-bright-chime-positive-sound-3/
 
 https://www.zapsplat.com/music/alert-tone-wooden-mallet-and-a-bright-chime-success-sound-1/
+
